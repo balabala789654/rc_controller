@@ -1,2 +1,3 @@
-# rc_controller
-## by android studio 
+# :dizzy_face:rc_controller
+## by :sparkling_heart:android studio 
+## :trollface: blueTooth
