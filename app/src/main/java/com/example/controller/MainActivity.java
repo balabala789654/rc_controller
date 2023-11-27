@@ -24,6 +24,11 @@ import java.util.Set;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
+    private final int Button_NO_press = 0;
+    private final int Button_up_press = 1;
+    private final int Button_down_press = 2;
+    private final int Button_left_press = 3;
+    private final int Button_right_press = 4;
     Button button_1;
     Button button_2;
     Button  button_up;
@@ -32,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
     Button  button_right;
     BlueTooth blueTooth;
     btpublicThread BTpublicThread = new btpublicThread();
-    public String massage;
-
+    private boolean Handler_running = false;
+    private int button_press_check = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,25 +65,94 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("lex", "button_2 on click");
             }
         });
-        button_up.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                Log.d("lex", "long click");
-                return false;
-            }
-        });
 
         final Handler handler = new Handler();
         final Runnable mLongPressed = new Runnable() {
             @Override
             public void run() {
+                if (Handler_running){
+                    switch (button_press_check){
+                        case Button_NO_press:{
+                            blueTooth.massage = "000";
+                            handler.removeCallbacks(this);
+                            Handler_running = false;
+                            break;
+                        }
+                        case Button_up_press:{
+                            blueTooth.massage = "111";
+                            break;
+                        }
+                        case Button_down_press: {
+                            blueTooth.massage = "222";
+                            break;
+                        }
+                        case Button_left_press: {
+                            blueTooth.massage = "333";
+                            break;
+                        }
+                        case Button_right_press: {
+                            blueTooth.massage = "444";
+                            break;
+                        }
+                    }
+//                    Log.d("lex", "handler");
+                    handler.postDelayed(this, 100);
+                }
             }
         };
         button_up.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN)
-                    handler.postDelayed(mLongPressed, 1000);
+                    button_press_check = Button_up_press;
+                    Handler_running = true;
+                handler.postDelayed(mLongPressed, 100);
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_CANCEL)
+                {
+                    button_press_check = Button_NO_press;
+                }
+                return false;
+            }
+        });
+        button_down.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN)
+                    button_press_check = Button_down_press;
+                    Handler_running = true;
+                handler.postDelayed(mLongPressed, 100);
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_CANCEL)
+                {
+                    button_press_check = Button_NO_press;
+                }
+                return false;
+            }
+        });
+        button_left.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN)
+                    button_press_check = Button_left_press;
+                    Handler_running = true;
+                handler.postDelayed(mLongPressed, 100);
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_CANCEL)
+                {
+                    button_press_check = Button_NO_press;
+                }
+                return false;
+            }
+        });
+        button_right.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN)
+                    button_press_check = Button_right_press;
+                    Handler_running = true;
+                handler.postDelayed(mLongPressed, 100);
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_CANCEL)
+                {
+                    button_press_check = Button_NO_press;
+                }
                 return false;
             }
         });

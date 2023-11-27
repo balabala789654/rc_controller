@@ -19,7 +19,7 @@
     </androidx.appcompat.widget.Toolbar>
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="100dp"
         android:gravity="center"
         android:orientation="horizontal">
         <Button
@@ -48,51 +48,52 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="300dp"
             android:layout_height="match_parent">
+
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="100dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:gravity="center">
+
                 <Button
                     android:id="@+id/button_left"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="left"
-                    android:textColor="#000000">
-                </Button>
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/arrow_left"></Button>
             </androidx.appcompat.widget.LinearLayoutCompat>
+
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="100dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <Button
                     android:id="@+id/button_up"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="up"
-                    android:textColor="#000000"
-                    android:layout_marginBottom="30dp">
-                </Button>
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="60dp"
+                    android:background="@drawable/baseline_arrow_upward_24"
+                    android:textColor="#000000"></Button>
+
                 <Button
                     android:id="@+id/button_down"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="down"
-                    android:textColor="#000000">
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/arrow_down">
 
                 </Button>
             </androidx.appcompat.widget.LinearLayoutCompat>
+
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="100dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:gravity="center">
+
                 <Button
                     android:id="@+id/button_right"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="right"
-                    android:textColor="#000000">
-                </Button>
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/arrow_right"></Button>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
