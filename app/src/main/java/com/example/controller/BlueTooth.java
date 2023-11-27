@@ -31,8 +31,10 @@ public class BlueTooth extends AppCompatActivity{
     BluetoothSocket bluetoothSocket;
     OutputStream outputStream;
     btpublicThread BTpublicThread = new btpublicThread();
-    public String massage = "000";
-
+    private final String massage_head = "nt";
+    private final String massage_end = "rc";
+    public String massage = "0";
+    public String massage_spin = "0";
     public boolean BlueTooth_init() {
         if (bluetoothAdapter == null) {
             Log.i("lex", "设备不支持蓝牙");
@@ -160,7 +162,7 @@ public class BlueTooth extends AppCompatActivity{
         public void run(){
             Log.d("lex", "Thread");
             while(running) {
-                BlueTooth_public(massage);
+                BlueTooth_public(massage_handler(massage + massage_spin));
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException interruptedException) {
@@ -169,6 +171,8 @@ public class BlueTooth extends AppCompatActivity{
             }
         }
     }
-
+    public String massage_handler(String msg){
+        return (massage_head + msg + massage_end);
+    }
 }
 
