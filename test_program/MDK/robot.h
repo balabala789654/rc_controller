@@ -9,6 +9,7 @@
 #include "usart.h"
 #include "const.h"
 #include "ros_to_stm32.h"
+#include "Low_pass.h"
 
 typedef struct{
 	PidType pid_params;
@@ -40,6 +41,7 @@ void robot_init(void);
 int chassis_drive(float _input[], _robot* _bot, char _switch);
 float* chassis_cal(RC_ctrl_t* _rc, _robot* _bot);
 int chassis_control(RC_ctrl_t* _rc);
+float* my_controller_cal(int _straight, int spin);
 
 #endif
 

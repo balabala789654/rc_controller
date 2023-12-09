@@ -25,7 +25,7 @@ void USART6_IRQHandler(void)
 		else if(USART_ReceiveData(USART6) == frame_end) 
 		{
 			usart6_buffers[i++] = USART_ReceiveData(USART6);
-			flag=0;
+			flag=0;	
 		}
 		if(flag) 
 			usart6_buffers[i++] = USART_ReceiveData(USART6);

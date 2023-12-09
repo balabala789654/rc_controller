@@ -17,6 +17,7 @@
 #define BlueTooth_end_1 114
 #define BlueTooth_end_2	99
 
+#define BlueTooth_switch 1 //À¶ÑÀ¿ØÖÆÆ÷¿ªÆô
 //#define frame_head 0x5a
 //#define frame_end 0xa5
 
